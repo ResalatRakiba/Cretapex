@@ -1,0 +1,39 @@
+<!doctype html>
+<!-- ---------------------------------------------------------------------------
+  index.html
+  The single HTML shell Vite serves. Everything visible is rendered by React
+  into <div id="root">.
+  Also handles: page title, SEO/social meta, favicon (built from the logo mark)
+  and the Google Fonts used across the site (Sora for headings, Inter for text).
+---------------------------------------------------------------------------- -->
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cretapex — Your Growth, Our Strategy</title>
+    <meta
+      name="description"
+      content="Cretapex is a full-service technology agency: web and mobile development, digital marketing, design, and video. Your growth, our strategy."
+    />
+    <meta name="theme-color" content="#F26A1B" />
+
+    <!-- Favicon + social preview use the PNG logo mark -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:title" content="Cretapex — Your Growth, Our Strategy" />
+    <meta property="og:description" content="A full-service technology partner for growing businesses." />
+    <meta property="og:image" content="/cretapex-logo.png" />
+    <meta property="og:type" content="website" />
+
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

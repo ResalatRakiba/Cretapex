@@ -1,0 +1,100 @@
+/* ---------------------------------------------------------------------------
+   src/index.css
+   1. Loads Tailwind's three layers.
+   2. Sets global page defaults (font smoothing, base text colour, selection).
+   3. Defines a handful of reusable component classes (buttons, cards, section
+      wrappers) so the JSX stays readable instead of carrying 20 utilities each.
+   4. Accessibility: visible keyboard focus ring + reduced-motion support.
+--------------------------------------------------------------------------- */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply font-sans text-ink-500 antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-ink;
+    letter-spacing: -0.02em;
+  }
+  /* Brand-coloured text selection */
+  ::selection {
+    background: #FFD9BF;
+    color: #0D0D0D;
+  }
+  /* Keyboard users always see where they are */
+  :focus-visible {
+    outline: 2px solid #F26A1B;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  /* Anchor links land below the fixed navbar */
+  section[id] {
+    scroll-margin-top: 110px;
+  }
+}
+
+@layer components {
+  /* Page gutter — one place to change the site's max width + padding */
+  .container-x {
+    @apply mx-auto w-full max-w-container px-5 sm:px-8;
+  }
+
+  /* Vertical rhythm between major sections */
+  .section-y {
+    @apply py-16 md:py-24;
+  }
+
+  /* Primary call to action — logo orange with a subtle depth gradient */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full
+           bg-gradient-to-b from-brand-400 to-brand-600 px-6 py-3
+           text-sm font-semibold text-white shadow-lift
+           transition hover:from-brand-500 hover:to-brand-700 active:translate-y-px;
+  }
+
+  /* Secondary CTA — outlined, used on dark backgrounds */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full
+           border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold
+           text-white backdrop-blur transition hover:border-brand-400 hover:bg-white/10;
+  }
+
+  /* Outlined CTA for light backgrounds */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full
+           border border-ink/15 px-6 py-3 text-sm font-semibold text-ink
+           transition hover:border-brand-500 hover:text-brand-600;
+  }
+
+  /* White content card used by Services / FAQ / Contact */
+  .card {
+    @apply rounded-2xl border border-ink/[0.07] bg-white shadow-card;
+  }
+
+  /* Small label chip (service tags floating over the hero, etc.) */
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/15
+           bg-white/10 px-3 py-1.5 text-xs font-medium text-white/85 backdrop-blur;
+  }
+
+  /* Section eyebrow above headings, matching the reference layout */
+  .eyebrow {
+    @apply mb-3 block text-xs font-semibold tracking-[0.22em] text-brand-600;
+  }
+}
+
+/* Respect the OS "reduce motion" preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
